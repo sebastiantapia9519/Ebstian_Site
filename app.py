@@ -14,8 +14,16 @@ from google.analytics.data_v1beta.types import (
 load_dotenv()
 BASE = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "cambia-esto-en-produccion")
-app.config.update(SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE="Lax")
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise RuntimeError("Falta SECRET_KEY. Configúrala en el entorno antes de iniciar Flask.")
+app.secret_key = SECRET_KEY
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+    # Railway serves the app over HTTPS; local development can remain HTTP.
+    SESSION_COOKIE_SECURE=bool(os.getenv("RAILWAY_ENVIRONMENT")),
+)
 
 PASSWORD = os.getenv("APP_PASSWORD", "")
 CACHE_TTL = int(os.getenv("CACHE_TTL", "300"))
@@ -171,33 +179,21 @@ def _token_ok():
     return bool(tok) and hmac.compare_digest(request.args.get("t", ""), tok)
 
 
-
 @app.before_request
 def guard():
-    """
-    Control de acceso:
-    - Homepage y recursos públicos: libres.
-    - Login: público.
-    - Reportes de clientes: acceso mediante token.
-    - Dashboard y APIs privadas: requieren sesión.
-    """
+    """Public routes stay public; ST Monitor and its APIs require a session.
 
-    public_endpoints = {
-        "home",
-        "login",
-        "static",
-        "manifest",
-        "sw",
-    }
+    Client reports remain accessible only with their individual share token.
+    """
+    public_endpoints = {"home", "login", "static", "manifest", "sw"}
 
     if request.endpoint in public_endpoints:
         return
 
-    # Los reportes compartidos mantienen su acceso por token.
     if request.endpoint in ("client_report", "api_report") and _token_ok():
         return
 
-    # No permitir acceso privado si no existe contraseña configurada.
+    # Fail closed: a missing APP_PASSWORD must never expose private services.
     if not PASSWORD:
         if request.path.startswith("/api/"):
             return jsonify(error="Autenticación no configurada"), 503
@@ -210,7 +206,6 @@ def guard():
         return jsonify(error="Sesión expirada"), 401
 
     return redirect("/login")
-
 
 
 LOGIN = """<!doctype html><html lang="es"><meta charset="utf-8">
@@ -226,6 +221,10 @@ p{color:#F5B544;margin:0;font-size:14px}</style>
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if not PASSWORD:
+        abort(503, description="Configura APP_PASSWORD en las variables de entorno.")
+    if session.get("ok"):
+        return redirect("/private")
     if request.method == "POST":
         if hmac.compare_digest(request.form.get("password", ""), PASSWORD):
             session["ok"] = True
@@ -237,28 +236,19 @@ def login():
 
 @app.route("/")
 def home():
-    """Homepage pública de Ebstian."""
+    """Public Ebstian homepage."""
     return render_template("index.html")
 
 
 @app.route("/private")
 def dashboard():
-    """Dashboard privado de ST Monitor."""
+    """Private ST Monitor dashboard."""
     sites = [
-        {
-            k: s.get(k)
-            for k in ("id", "name", "url")
-        } | {
-            "token": s.get("share_token", "")
-        }
+        {k: s.get(k) for k in ("id", "name", "url")}
+        | {"token": s.get("share_token", "")}
         for s in load_sites()
     ]
-
-    return render_template(
-        "dashboard.html",
-        sites=sites,
-        client=None
-    )
+    return render_template("dashboard.html", sites=sites, client=None)
 
 
 @app.route("/reporte/<site_id>")
