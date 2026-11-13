@@ -5,6 +5,8 @@ from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor
 from flask import Flask, jsonify, render_template, render_template_string, request, session, redirect, abort
 from dotenv import load_dotenv
+from extensions import db, migrate
+from models import Artist, Album, Collection, CollectionItem, RandomEntry, Experiment, SiteSetting
 from google.oauth2 import service_account
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import (
@@ -14,6 +16,25 @@ from google.analytics.data_v1beta.types import (
 load_dotenv()
 BASE = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
+
+# PostgreSQL is supplied by Railway through DATABASE_URL. A local SQLite
+# fallback keeps development possible without requiring a cloud database.
+database_url = os.getenv("DATABASE_URL") or os.getenv("POSTGRES_URL")
+if database_url:
+    if database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql+psycopg://", 1)
+    elif database_url.startswith("postgresql://"):
+        database_url = database_url.replace("postgresql://", "postgresql+psycopg://", 1)
+else:
+    database_url = "sqlite:///" + os.path.join(BASE, "ebstian-local.db")
+
+app.config.update(
+    SQLALCHEMY_DATABASE_URI=database_url,
+    SQLALCHEMY_TRACK_MODIFICATIONS=False,
+    SQLALCHEMY_ENGINE_OPTIONS={"pool_pre_ping": True},
+)
+db.init_app(app)
+migrate.init_app(app, db)
 SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
     raise RuntimeError("Falta SECRET_KEY. Configúrala en el entorno antes de iniciar Flask.")
