@@ -21,8 +21,8 @@ app.secret_key = SECRET_KEY
 app.config.update(
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
-    # Railway serves the app over HTTPS; local development can remain HTTP.
     SESSION_COOKIE_SECURE=bool(os.getenv("RAILWAY_ENVIRONMENT")),
+    PERMANENT_SESSION_LIFETIME=__import__("datetime").timedelta(hours=12),
 )
 
 PASSWORD = os.getenv("APP_PASSWORD", "")
@@ -237,7 +237,16 @@ def login():
 @app.route("/")
 def home():
     """Public Ebstian homepage."""
-    return render_template("index.html")
+    # Accept only Spotify embed targets from Spotify itself. The operator can
+    # provide a playlist, album, or artist URL through SPOTIFY_URL in Railway.
+    spotify_embed_url = None
+    spotify_url = os.getenv("SPOTIFY_URL", "").strip()
+    if spotify_url:
+        parsed = urlparse(spotify_url)
+        match = re.match(r"^/(playlist|album|artist|show|episode)/([A-Za-z0-9]+)$", parsed.path)
+        if parsed.scheme == "https" and parsed.hostname == "open.spotify.com" and match:
+            spotify_embed_url = f"https://open.spotify.com/embed/{match.group(1)}/{match.group(2)}?utm_source=generator"
+    return render_template("index.html", spotify_embed_url=spotify_embed_url)
 
 
 @app.route("/private")

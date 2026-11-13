@@ -2,108 +2,116 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#101010">
-  <meta name="description" content="Un rincón independiente de Internet. Música, experimentos, colecciones y cosas inesperadas.">
-  <title>EBSTIAN — A little corner of the internet</title>
+  <meta name="description" content="Ebstian: un rincón independiente de Internet. Música, experimentos, colecciones y curiosidad.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EBSTIAN — Nothing in particular">
+  <meta property="og:description" content="A little bit of everything. Nothing in particular.">
+  <title>EBSTIAN — Nothing in particular</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <script defer src="{{ url_for('static', filename='js/terminal.js') }}"></script>
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/terminal.js') }}"></script>
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="wordmark" href="#top" aria-label="Ebstian, inicio">EBSTIAN<span>.</span></a>
-    <div class="header-meta"><span class="status-dot"></span><span>INDEPENDENT CORNER OF THE INTERNET</span></div>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">MENU <span>＋</span></button>
-    <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
-      <a href="#music">MUSIC</a><a href="#experiments">LAB</a><a href="#random">RANDOM</a><a href="#collections">COLLECTIONS</a>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="header" id="top">
+    <a class="brand" href="#top" aria-label="Ebstian, inicio">EBSTIAN<span>.</span></a>
+    <div class="header-center"><span class="live-dot"></span> AN INDEPENDENT CORNER OF THE INTERNET</div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">MENU <span>＋</span></button>
+    <nav class="navigation" id="navigation" aria-label="Navegación principal">
+      <a href="#music">MUSIC</a><a href="#lab">LAB</a><a href="#random">RANDOM</a><a href="#collections">COLLECTIONS</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero section-shell">
-      <div class="hero-kicker"><span>PERSONAL WEBSITE</span><span>EST. MMXXVI</span></div>
-      <div class="hero-main">
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-meta mono"><span>PERSONAL WEBSITE / 001</span><span>EST. MMXXVI</span></div>
+      <div class="hero-content">
         <p class="eyebrow">WELCOME TO MY LITTLE CORNER OF THE INTERNET</p>
-        <h1>Nothing<br><span class="muted-word">in particular.</span></h1>
+        <h1 id="hero-title">Nothing<br><em>in particular.</em></h1>
         <div class="hero-bottom">
-          <p class="hero-description">A little bit of everything. Music, experiments, things I like, and other stuff that probably didn't need a website.</p>
-          <a class="round-link" href="#explore" aria-label="Explorar el sitio"><span>↓</span></a>
+          <p class="hero-copy">A little bit of everything. Music, experiments, things I like, and other stuff that probably didn't need a website.</p>
+          <a class="circle-link" href="#explore" aria-label="Explorar Ebstian"><span>↓</span></a>
         </div>
       </div>
-      <div class="hero-foot"><span>SCROLL TO EXPLORE</span><span id="local-clock">--:--:-- MONTERREY, MX</span></div>
+      <div class="hero-footer mono"><span>SCROLL TO EXPLORE</span><span><time id="local-clock">--:--:--</time> <b>LOCAL TIME</b></span></div>
+      <div class="hero-index" aria-hidden="true">E.</div>
     </section>
 
-    <section class="intro-strip" id="explore">
-      <p>NOT A PORTFOLIO. NOT A BLOG. JUST A PLACE TO PUT THINGS.</p>
-      <span class="strip-mark">✳</span>
-    </section>
+    <div class="ticker" id="explore"><div class="ticker-track" aria-hidden="true"><span>NOT A PORTFOLIO</span><i>✳</i><span>NOT A BLOG</span><i>✳</i><span>JUST A PLACE TO PUT THINGS</span><i>✳</i><span>NOT A PORTFOLIO</span><i>✳</i><span>NOT A BLOG</span><i>✳</i></div></div>
 
-    <section class="content-section section-shell" id="music">
-      <div class="section-heading"><div><span class="section-index">01 / SOUNDTRACK</span><h2>On repeat<span>.</span></h2></div><p class="section-aside">Some sounds that<br>make the days better.</p></div>
-      <div class="music-layout">
-        <div class="music-feature">
-          <div class="record-art" aria-hidden="true"><div class="record-disc"><div class="record-label">E<span>.</span></div></div><span class="art-caption">PERSONAL ROTATION / VOL. 01</span></div>
-          <div class="music-feature-copy"><span class="eyebrow">CURRENTLY INTO</span><h3>Guitars, feelings<br> & a little chaos.</h3><p>Rock en español, pop punk, indie y canciones para cantar como si nadie estuviera escuchando.</p></div>
+    <section class="section wrap" id="music">
+      <div class="section-head"><div><p class="section-no mono">01 / SOUNDTRACK</p><h2>On repeat<span>.</span></h2></div><p class="section-aside">Some sounds that<br>make the days better.</p></div>
+      <div class="music-grid">
+        <div class="music-intro">
+          <div class="vinyl-art" aria-label="Ilustración abstracta de un disco de vinilo"><div class="vinyl-disc"><div class="vinyl-center">E<span>.</span></div></div><span class="vinyl-caption mono">PERSONAL ROTATION / VOL. 01</span><span class="vinyl-side mono">SIDE A — FEEL EVERYTHING</span></div>
+          <div class="music-copy"><p class="eyebrow">CURRENTLY INTO</p><h3>Guitars, feelings<br>& a little chaos.</h3><p>Rock en español, pop punk, indie y canciones para cantar como si nadie estuviera escuchando.</p><a class="inline-link" href="https://open.spotify.com/search/Jos%C3%A9%20Madero" target="_blank" rel="noopener noreferrer">EXPLORE ON SPOTIFY <span>↗</span></a></div>
         </div>
-        <div class="artist-list" aria-label="Artistas favoritos">
-          <div class="artist-row"><span>01</span><strong>José Madero</strong><small>MX / SOLO</small></div>
-          <div class="artist-row"><span>02</span><strong pxndx>Panda (PXNDX)</strong><small>MX / ROCK</small></div>
-          <div class="artist-row"><span>03</span><strong>Simple Plan</strong><small>CA / POP PUNK</small></div>
-          <div class="artist-row"><span>04</span><strong>Serbia</strong><small>MX / ROCK</small></div>
-          <div class="artist-row"><span>05</span><strong>Nunca Jamás</strong><small>MX / ROCK</small></div>
-          <div class="artist-row"><span>06</span><strong>No Te Va Gustar</strong><small>UY / ROCK</small></div>
-          <div class="artist-row"><span>07</span><strong>Sabino</strong><small>MX / SAB-HOP</small></div>
-          <div class="artist-row"><span>08</span><strong>Genitallica</strong><small>MX / ROCK</small></div>
-          <div class="artist-row"><span>09</span><strong>Imagine Dragons</strong><small>US / ALT</small></div>
-          <div class="artist-row"><span>10</span><strong>Love of Lesbian</strong><small>ES / INDIE</small></div>
-          <div class="artist-row"><span>11</span><strong>Los Caligaris</strong><small>AR / SKA-ROCK</small></div>
+        <div class="artist-panel"><div class="artist-panel-head mono"><span>THE ROTATION</span><span>11 ARTISTS</span></div>
+          <a class="artist-row" href="https://open.spotify.com/search/Jos%C3%A9%20Madero" target="_blank" rel="noopener noreferrer"><span>01</span><strong>José Madero</strong><small>MX / ROCK</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/PXNDX" target="_blank" rel="noopener noreferrer"><span>02</span><strong>PXNDX</strong><small>MX / ALTERNATIVE</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/Simple%20Plan" target="_blank" rel="noopener noreferrer"><span>03</span><strong>Simple Plan</strong><small>CA / POP PUNK</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/Serbia" target="_blank" rel="noopener noreferrer"><span>04</span><strong>Serbia</strong><small>MX / ROCK</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/Nunca%20Jam%C3%A1s" target="_blank" rel="noopener noreferrer"><span>05</span><strong>Nunca Jamás</strong><small>MX / ROCK</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/No%20Te%20Va%20Gustar" target="_blank" rel="noopener noreferrer"><span>06</span><strong>No Te Va Gustar</strong><small>UY / ROCK</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/Sabino" target="_blank" rel="noopener noreferrer"><span>07</span><strong>Sabino</strong><small>MX / SAB-HOP</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/Genitallica" target="_blank" rel="noopener noreferrer"><span>08</span><strong>Genitallica</strong><small>MX / ROCK</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/Imagine%20Dragons" target="_blank" rel="noopener noreferrer"><span>09</span><strong>Imagine Dragons</strong><small>US / ALT</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/Love%20of%20Lesbian" target="_blank" rel="noopener noreferrer"><span>10</span><strong>Love of Lesbian</strong><small>ES / INDIE</small><b>↗</b></a>
+          <a class="artist-row" href="https://open.spotify.com/search/Los%20Caligaris" target="_blank" rel="noopener noreferrer"><span>11</span><strong>Los Caligaris</strong><small>AR / SKA-ROCK</small><b>↗</b></a>
         </div>
       </div>
-      <p class="section-note">No streaming here yet. Just a little appreciation wall for the soundtrack.</p>
-    </section>
-
-    <section class="content-section experiments-section" id="experiments">
-      <div class="section-shell">
-        <div class="section-heading"><div><span class="section-index">02 / THE LAB</span><h2>Experiments<span>.</span></h2></div><p class="section-aside">Small things. Weird ideas.<br>Made just because.</p></div>
-        <div class="experiment-grid">
-          <article class="experiment-card terminal-card"><div class="card-topline"><span>EBSTIAN.SHELL</span><span>01 — INTERACTIVE</span></div><div class="mini-terminal"><span class="prompt-line">visitor@ebstian:~$ <b>help</b></span><span>about&nbsp;&nbsp; music&nbsp;&nbsp; random</span><span>collections&nbsp;&nbsp; login</span><span class="cursor-line">_</span></div><div class="experiment-card-bottom"><h3>The terminal</h3><span>↗</span></div><p>There is more than one way to navigate.</p></article>
-          <article class="experiment-card orbit-card"><div class="orbit-visual" aria-hidden="true"><i></i><i></i><i></i><b>?</b></div><div class="experiment-card-bottom"><h3>Little experiments</h3><span>02</span></div><p>Interactive ideas and digital objects. Coming as they happen.</p></article>
-        </div>
+      <div class="spotify-area">
+        <div><p class="eyebrow">THE PERSONAL SOUNDTRACK</p><h3>Press play, if you want.</h3><p class="muted">This space is ready for a playlist. No songs are hosted here.</p></div>
+        {% if spotify_embed_url %}
+          <iframe class="spotify-frame" src="{{ spotify_embed_url }}" title="Playlist de Spotify de Ebstian" width="100%" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        {% else %}
+          <a class="spotify-placeholder" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer"><span class="spotify-mark">◖</span><span><strong>Spotify goes here</strong><small>Una playlist tuya puede vivir aquí.</small></span><b>↗</b></a>
+        {% endif %}
       </div>
     </section>
 
-    <section class="content-section section-shell random-section" id="random">
-      <div class="section-heading"><div><span class="section-index">03 / NO PARTICULAR REASON</span><h2>Random<span>.</span></h2></div><p class="section-aside">The internet is a big place.<br>Let's get lost for a second.</p></div>
-      <div class="random-panel"><span class="eyebrow">A THOUGHT, MAYBE.</span><p id="random-thought">Somewhere, someone is having the best day of their life and doesn't even know it yet.</p><button class="text-button" id="random-button" type="button">GIVE ME ANOTHER <span>↗</span></button><span class="random-watermark" aria-hidden="true">?</span></div>
+    <section class="lab-section" id="lab">
+      <div class="wrap section">
+        <div class="section-head"><div><p class="section-no mono">02 / THE LAB</p><h2>Experiments<span>.</span></h2></div><p class="section-aside">Small things. Weird ideas.<br>Made just because.</p></div>
+        <div class="lab-grid">
+          <article class="lab-card terminal-teaser"><div class="card-meta mono"><span>EBSTIAN.SHELL</span><span>01 — INTERACTIVE</span></div><div class="teaser-terminal"><p><span>visitor@ebstian:~$</span> help</p><p>about&nbsp;&nbsp; music&nbsp;&nbsp; random</p><p>collections&nbsp;&nbsp; experiments&nbsp;&nbsp; login</p><p class="teaser-cursor">_</p></div><div class="lab-card-bottom"><div><h3>The terminal</h3><p>There is more than one way to navigate.</p></div><a href="#terminal" aria-label="Ir a la terminal">↘</a></div></article>
+          <article class="lab-card orbit-card"><div class="card-meta mono"><span>PLAYGROUND / 002</span><span>GENERATIVE</span></div><button class="orbit-stage" id="orbit-button" type="button" aria-label="Cambiar el patrón generativo"><span class="orbit-ring ring-one"></span><span class="orbit-ring ring-two"></span><span class="orbit-ring ring-three"></span><span class="orbit-core">E.</span><span class="orbit-hint mono">CLICK TO DISTURB</span></button><div class="lab-card-bottom"><div><h3>Orbit study</h3><p>A tiny generative object. Click it and see.</p></div><span>02</span></div></article>
+        </div>
+        <div class="lab-foot mono"><span>BUILT OUT OF CURIOSITY</span><span>NO PARTICULAR PURPOSE REQUIRED</span></div>
+      </div>
     </section>
 
-    <section class="content-section section-shell collections-section" id="collections">
-      <div class="section-heading"><div><span class="section-index">04 / THINGS WORTH KEEPING</span><h2>Collections<span>.</span></h2></div><p class="section-aside">A growing archive of<br>things I find interesting.</p></div>
+    <section class="section wrap random-section" id="random">
+      <div class="section-head"><div><p class="section-no mono">03 / NO PARTICULAR REASON</p><h2>Random<span>.</span></h2></div><p class="section-aside">The internet is a big place.<br>Let's get lost for a second.</p></div>
+      <div class="random-card"><div class="random-top mono"><span>RANDOM THOUGHT GENERATOR</span><span id="random-count">NO. 001</span></div><p id="random-thought" aria-live="polite">You are allowed to make things just because they are fun.</p><div class="random-bottom"><span class="mono">A SMALL INTERRUPTION TO YOUR SCROLL.</span><button id="random-button" class="random-button" type="button">GIVE ME ANOTHER <b>↗</b></button></div><span class="random-ghost" aria-hidden="true">?</span></div>
+      <div class="random-links"><a href="https://www.are.na/" target="_blank" rel="noopener noreferrer"><span>01</span> ARE.NA <b>↗</b></a><a href="https://theuselessweb.com/" target="_blank" rel="noopener noreferrer"><span>02</span> THE USELESS WEB <b>↗</b></a><a href="https://pointerpointer.com/" target="_blank" rel="noopener noreferrer"><span>03</span> POINTER POINTER <b>↗</b></a></div>
+    </section>
+
+    <section class="collection-section" id="collections"><div class="wrap section">
+      <div class="section-head"><div><p class="section-no mono">04 / THINGS WORTH KEEPING</p><h2>Collections<span>.</span></h2></div><p class="section-aside">A growing archive of<br>things I find interesting.</p></div>
       <div class="collection-grid">
-        <a class="collection-card collection-music" href="#music"><span class="collection-number">COLLECTION 001</span><div class="collection-symbol">♫</div><div><h3>Sounds</h3><p>Artists, albums & songs.</p></div><span class="collection-arrow">↗</span></a>
-        <a class="collection-card collection-cinema" href="#collections"><span class="collection-number">COLLECTION 002</span><div class="collection-symbol">◉</div><div><h3>On screen</h3><p>Films, series & stories.</p></div><span class="collection-arrow">↗</span></a>
-        <a class="collection-card collection-objects" href="#collections"><span class="collection-number">COLLECTION 003</span><div class="collection-symbol">⌘</div><div><h3>Objects & ideas</h3><p>Technology, design & curiosities.</p></div><span class="collection-arrow">↗</span></a>
+        <a class="collection-card" href="#music"><span class="collection-no mono">COLLECTION 001</span><span class="collection-art art-sound">♫</span><div><h3>Sounds</h3><p>Artists, albums & songs.</p></div><b>↗</b></a>
+        <a class="collection-card" href="https://www.imdb.com/" target="_blank" rel="noopener noreferrer"><span class="collection-no mono">COLLECTION 002</span><span class="collection-art art-screen">◉</span><div><h3>On screen</h3><p>Films, series & stories.</p></div><b>↗</b></a>
+        <a class="collection-card" href="#lab"><span class="collection-no mono">COLLECTION 003</span><span class="collection-art art-tech">⌘</span><div><h3>Objects & ideas</h3><p>Technology, design & curiosities.</p></div><b>↗</b></a>
+        <a class="collection-card" href="#about"><span class="collection-no mono">COLLECTION 004</span><span class="collection-art art-life">✳</span><div><h3>Little life</h3><p>Everyday things worth remembering.</p></div><b>↗</b></a>
       </div>
-      <p class="section-note">This archive is a work in progress. More things will find their way here.</p>
-    </section>
+    </div></section>
 
-    <section class="terminal-section" id="terminal">
-      <div class="section-shell"><div class="section-heading terminal-heading"><div><span class="section-index">05 / YOUR MOVE</span><h2>Try the terminal<span>.</span></h2></div><p class="section-aside">A tiny command line.<br>Be curious.</p></div>
-        <div class="terminal-window" role="region" aria-label="Terminal interactiva">
-          <div class="terminal-titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>visitor@ebstian — shell</span><button type="button" id="terminal-clear" aria-label="Limpiar terminal">CLEAR</button></div>
-          <div class="terminal-output" id="terminal-output" aria-live="polite"><p class="terminal-muted">EBSTIAN SHELL [VERSION 1.0.0]</p><p>Welcome, stranger. Type <code>help</code> to see what you can do.</p></div>
-          <form class="terminal-form" id="terminal-form" autocomplete="off"><label for="terminal-input">visitor@ebstian:~$</label><input id="terminal-input" name="command" type="text" spellcheck="false" autocapitalize="off" aria-label="Escribe un comando" placeholder="try: help"><span class="input-cursor"></span></form>
-        </div>
-        <p class="terminal-hint">TRY <button type="button" data-command="help">help</button> · <button type="button" data-command="music">music</button> · <button type="button" data-command="random">random</button> · <button type="button" data-command="login">login</button></p>
-      </div>
-    </section>
+    <section class="about-section" id="about"><div class="wrap about-inner"><p class="section-no mono">A LITTLE CONTEXT / 005</p><div class="about-copy"><h2>Built by a curious human<span>.</span></h2><p>I'm Sebastián. Developer by profession, builder by instinct. I like making useful things, exploring the internet, good music, and starting side projects that sometimes become real products.</p><p>This is not my résumé. It's the drawer where the interesting stuff goes.</p></div><div class="about-tags mono"><span>DEVELOPMENT</span><span>MUSIC</span><span>IDEAS</span><span>MONTERREY, MX</span></div></div></section>
+
+    <section class="terminal-section" id="terminal"><div class="wrap section">
+      <div class="section-head"><div><p class="section-no mono">06 / YOUR MOVE</p><h2>Try the terminal<span>.</span></h2></div><p class="section-aside">A tiny command line.<br>Be curious.</p></div>
+      <div class="terminal-window" role="region" aria-label="Terminal interactiva"><div class="terminal-titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>visitor@ebstian — shell</span><button id="terminal-clear" type="button">CLEAR</button></div><div class="terminal-output" id="terminal-output" aria-live="polite"><p class="terminal-muted">EBSTIAN SHELL [VERSION 2.0.0]</p><p>Welcome, stranger. Type <code>help</code> to see what you can do.</p></div><form class="terminal-form" id="terminal-form" autocomplete="off"><label for="terminal-input">visitor@ebstian:~$</label><input id="terminal-input" name="command" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="Escribe un comando" placeholder="try: help"><button type="submit" aria-label="Ejecutar comando">↵</button></form></div>
+      <div class="terminal-hints mono">TRY <button type="button" data-command="help">help</button> · <button type="button" data-command="music">music</button> · <button type="button" data-command="random">random</button> · <button type="button" data-command="login">login</button></div>
+    </div></section>
   </main>
 
-  <footer class="site-footer section-shell"><a class="wordmark footer-wordmark" href="#top">EBSTIAN<span>.</span></a><p>Made with curiosity. And probably too much coffee.</p><div class="footer-bottom"><span>© <span id="year">2026</span> EBSTIAN.COM</span><span>MONTERREY, MX <b>·</b> INTERNET, EARTH</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+  <footer class="footer wrap"><a class="brand footer-brand" href="#top">EBSTIAN<span>.</span></a><p>Made with curiosity. And probably too much coffee.</p><div class="footer-bottom mono"><span>© <span id="year">2026</span> EBSTIAN.COM</span><span>MONTERREY, MX · INTERNET, EARTH</span><a href="#top">BACK TO TOP ↑</a></div></footer>
 </body>
 </html>
