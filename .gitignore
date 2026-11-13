@@ -2,3 +2,15 @@ service-account.json
 .env
 .bak
 *.bak
+# Bases de datos locales
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Entornos virtuales
+.venv/
+venv/
