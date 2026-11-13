@@ -1,0 +1,25 @@
+{
+  "sites": [
+    {
+      "id": "sianeffects",
+      "name": "Sianeffects",
+      "url": "https://www.sianeffects.com",
+      "property_id": "563634606",
+      "share_token": "il9rb0QvaVRzJYgB"
+    },
+    {
+      "id": "2youbysol",
+      "name": "2youbysol",
+      "url": "https://www.2youbysol.com",
+      "property_id": "563654863",
+      "share_token": "_PCvINOd5jdNIMyP"
+    },
+    {
+      "id": "chandral",
+      "name": "CHANDRAL",
+      "url": "https://www.chandral.mx",
+      "property_id": "563641977",
+      "share_token": "4paTRL6o06bP9M7A"
+    }
+  ]
+}
